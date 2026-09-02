@@ -13,7 +13,7 @@ The automation connects to an existing Chromium session through the Chrome DevTo
 - Connects to an existing Chromium session using CDP
 - Dynamically identifies the target FacePrep page
 - Navigates module and question sections
-- Handles different test states such as:
+- Handles different test states:
   - Start Test
   - Retry Test
   - Resume Test
@@ -25,9 +25,9 @@ The automation connects to an existing Chromium session through the Chrome DevTo
 
 ## Tech Stack
 
-- **JavaScript**
-- **Node.js**
-- **Playwright**
+- JavaScript
+- Node.js
+- Playwright
 
 ## Requirements
 
@@ -40,70 +40,44 @@ Before running the project, make sure you have:
 
 ## Installation
 
-Clone the repository and install the required dependencies:
+Clone the repository:
 
-```bash
-npm install
-```
+`git clone https://github.com/iamuzzi-7523/faceprep-browser-automation.git`
+
+Enter the project directory:
+
+`cd faceprep-browser-automation`
+
+Install the required dependencies:
+
+`npm install`
 
 ## Configuration
 
 The automation connects to Chromium through the Chrome DevTools Protocol.
 
-The default endpoint is:
+Default endpoint:
 
-```text
-http://localhost:9222
-```
+`http://localhost:9222`
 
-You can override the endpoint using the `CDP_ENDPOINT` environment variable.
+The endpoint can be changed using the `CDP_ENDPOINT` environment variable.
 
-### Windows Command Prompt
+Default module:
 
-```cmd
-set CDP_ENDPOINT=http://localhost:9222
-npm start
-```
+`T37x`
 
-### PowerShell
+Multiple modules can be supplied using the `MODULES` environment variable.
 
-```powershell
-$env:CDP_ENDPOINT="http://localhost:9222"
-npm start
-```
+Example:
 
-The default module is:
-
-```text
-T37x
-```
-
-Multiple modules can be provided using the `MODULES` environment variable.
-
-### Windows Command Prompt
-
-```cmd
-set MODULES=T37x,T38x
-npm start
-```
-
-### PowerShell
-
-```powershell
-$env:MODULES="T37x,T38x"
-npm start
-```
+`MODULES=T37x,T38x`
 
 ## Running the Automation
 
-1. Start Chromium/Chrome with remote debugging enabled.
+1. Start Chromium or Chrome with remote debugging enabled.
 2. Open the required FacePrep practice page.
 3. Make sure the browser session is accessible through the configured CDP endpoint.
-4. Run:
-
-```bash
-npm start
-```
+4. Run `npm start`.
 
 The script will:
 
@@ -117,14 +91,11 @@ The script will:
 
 ## Project Structure
 
-```text
-faceprep-browser-automation/
-├── faceprep-automation.js
-├── package.json
-├── package-lock.json
-├── .gitignore
-└── README.md
-```
+- `faceprep-automation.js` — Main browser automation script
+- `package.json` — Project configuration and dependencies
+- `package-lock.json` — Locked dependency versions
+- `.gitignore` — Files excluded from version control
+- `README.md` — Project documentation
 
 ## Engineering Approach
 
@@ -159,12 +130,8 @@ Instead, it checks for available question tabs and continues discovering them un
 
 ## Configuration Through Environment Variables
 
-Runtime-specific values are kept outside the source code where possible.
-
-Supported variables:
-
 | Variable | Default | Description |
-|---|---|---|
+| --- | --- | --- |
 | `CDP_ENDPOINT` | `http://localhost:9222` | Chromium remote debugging endpoint |
 | `MODULES` | `T37x` | Comma-separated list of modules to process |
 
