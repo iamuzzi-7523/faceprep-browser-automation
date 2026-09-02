@@ -43,8 +43,6 @@ Before running the project, make sure you have:
 Clone the repository and install the required dependencies:
 
 ```bash
-git clone https://github.com/iamuzzi-7523/faceprep-browser-automation.git
-cd faceprep-browser-automation
 npm install
 ```
 
