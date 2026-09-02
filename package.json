@@ -13,7 +13,7 @@
     "automation-testing"
   ],
   "author": "Mohammed Uzair",
-  "license": "MIT",
+  "license": "ISC",
   "dependencies": {
     "playwright": "^1.60.0"
   }
