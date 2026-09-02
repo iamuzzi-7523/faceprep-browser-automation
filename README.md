@@ -64,13 +64,13 @@ The endpoint can be changed using the `CDP_ENDPOINT` environment variable.
 
 Default module:
 
-`T37x`
+`T37`
 
 Multiple modules can be supplied using the `MODULES` environment variable.
 
 Example:
 
-`MODULES=T37x,T38x`
+`MODULES=T37,T38`
 
 ## Running the Automation
 
