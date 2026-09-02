@@ -1,46 +1,78 @@
 # FacePrep Browser Automation
 
-A Playwright-based browser automation project built to practice reliable interaction with a dynamic coding-practice web interface.
+A Playwright-based browser automation project for navigating and inspecting coding-practice workflows through a connected Chromium browser session.
 
-## What it demonstrates
+## Overview
 
-- Connecting Playwright to an existing Chromium session through CDP
-- Detecting the target page dynamically
-- Navigating module and section interfaces
-- Handling different test states such as Start, Retry, Resume, and Continue
-- Discovering question tabs dynamically instead of hard-coding question counts
-- Structuring browser automation into reusable functions
-- Using environment variables for runtime configuration
+This project explores browser automation using Playwright and demonstrates how a script can interact with a dynamic web application instead of relying on fixed page positions or manual navigation.
+
+The automation connects to an existing Chromium session through the Chrome DevTools Protocol (CDP), identifies the relevant FacePrep page, navigates through practice modules, handles different test states, and dynamically discovers available question tabs.
+
+## Features
+
+- Connects to an existing Chromium session using CDP
+- Dynamically identifies the target FacePrep page
+- Navigates module and question sections
+- Handles different test states such as:
+  - Start Test
+  - Retry Test
+  - Resume Test
+  - Continue
+- Dynamically discovers available question tabs
+- Uses reusable functions to organize the automation workflow
+- Supports configuration through environment variables
+- Provides clear console output during execution
 
 ## Tech Stack
 
-- JavaScript
-- Node.js
-- Playwright
+- **JavaScript**
+- **Node.js**
+- **Playwright**
 
 ## Requirements
 
-- Node.js
-- Chromium/Chrome with remote debugging enabled
+Before running the project, make sure you have:
+
+- Node.js installed
+- Chromium or Google Chrome available
+- A Chromium/Chrome session running with remote debugging enabled
 - Access to the relevant coding-practice environment
 
 ## Installation
 
-Install the project dependencies with:
+Clone the repository and install the required dependencies:
 
 ```bash
+git clone https://github.com/iamuzzi-7523/faceprep-browser-automation.git
+cd faceprep-browser-automation
 npm install
 ```
 
 ## Configuration
 
-The default browser debugging endpoint is:
+The automation connects to Chromium through the Chrome DevTools Protocol.
+
+The default endpoint is:
 
 ```text
 http://localhost:9222
 ```
 
-It can be overridden using the `CDP_ENDPOINT` environment variable.
+You can override the endpoint using the `CDP_ENDPOINT` environment variable.
+
+### Windows Command Prompt
+
+```cmd
+set CDP_ENDPOINT=http://localhost:9222
+npm start
+```
+
+### PowerShell
+
+```powershell
+$env:CDP_ENDPOINT="http://localhost:9222"
+npm start
+```
 
 The default module is:
 
@@ -48,17 +80,42 @@ The default module is:
 T37x
 ```
 
-Multiple modules can be supplied as a comma-separated list using the `MODULES` environment variable.
+Multiple modules can be provided using the `MODULES` environment variable.
 
-## Run
+### Windows Command Prompt
 
-Open the required browser session and target practice page, then run:
+```cmd
+set MODULES=T37x,T38x
+npm start
+```
+
+### PowerShell
+
+```powershell
+$env:MODULES="T37x,T38x"
+npm start
+```
+
+## Running the Automation
+
+1. Start Chromium/Chrome with remote debugging enabled.
+2. Open the required FacePrep practice page.
+3. Make sure the browser session is accessible through the configured CDP endpoint.
+4. Run:
 
 ```bash
 npm start
 ```
 
-The script detects the target page, navigates through the configured sections, and reports the question tabs it discovers.
+The script will:
+
+1. Connect to the existing browser session.
+2. Locate the FacePrep page.
+3. Navigate through the configured modules.
+4. Open the selected practice sections.
+5. Detect the available test state.
+6. Discover question tabs dynamically.
+7. Report the discovered questions in the console.
 
 ## Project Structure
 
@@ -71,14 +128,69 @@ faceprep-browser-automation/
 └── README.md
 ```
 
-## Engineering Notes
+## Engineering Approach
 
-The automation uses Playwright locators such as `getByRole()` and `getByText()` where practical.
+The project focuses on making browser automation more maintainable and less dependent on fixed page positions.
 
-Dynamic discovery is used for browser pages, module sections, test states, and question counts rather than relying entirely on fixed positions.
+### Dynamic Page Detection
 
-Runtime-specific configuration is handled through environment variables instead of being embedded directly into the project configuration.
+Instead of assuming a particular browser tab or page index, the automation searches for a page associated with the target environment.
+
+### Reusable Workflow Functions
+
+The automation is separated into functions for:
+
+- Connecting to the browser
+- Opening module sections
+- Inspecting questions
+- Running the overall workflow
+
+This keeps the main execution flow easier to understand and modify.
+
+### Playwright Locators
+
+The project uses Playwright locators such as `getByRole()` and `getByText()` where practical.
+
+These locators allow the automation to interact with elements based on their roles and visible text rather than relying exclusively on fragile positional selectors.
+
+### Dynamic Question Discovery
+
+The automation does not assume a fixed number of questions.
+
+Instead, it checks for available question tabs and continues discovering them until no additional question is found.
+
+## Configuration Through Environment Variables
+
+Runtime-specific values are kept outside the source code where possible.
+
+Supported variables:
+
+| Variable | Default | Description |
+|---|---|---|
+| `CDP_ENDPOINT` | `http://localhost:9222` | Chromium remote debugging endpoint |
+| `MODULES` | `T37x` | Comma-separated list of modules to process |
+
+## Learning Goals
+
+This project was built as part of my learning journey in:
+
+- Browser automation
+- Playwright
+- JavaScript
+- Node.js
+- Web application interaction
+- Dynamic element handling
+- Automation workflow design
+- Git and GitHub
+
+## Disclaimer
+
+This repository is intended as a learning and portfolio project demonstrating browser automation concepts.
+
+The public version focuses on browser navigation and workflow inspection rather than automating the generation or submission of answers to coding assessments.
 
 ## Author
 
-Mohammed Uzair
+**Mohammed Uzair**
+
+GitHub: [@iamuzzi-7523](https://github.com/iamuzzi-7523)
