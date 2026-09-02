@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "Playwright-based browser automation for navigating and inspecting coding-practice workflows.",
   "main": "faceprep-automation.js",
-  "scripts": {
-    "start": "node faceprep-automation.js"
-  },
+"scripts": {
+  "start": "node faceprep-automation.js",
+  "check": "node --check faceprep-automation.js"
+},,
   "keywords": [
     "playwright",
     "browser-automation",
