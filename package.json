@@ -1,14 +1,19 @@
 {
   "name": "faceprep-bot",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Playwright-based browser automation for navigating and inspecting coding-practice workflows.",
+  "main": "faceprep-automation.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node faceprep-automation.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "playwright",
+    "browser-automation",
+    "javascript",
+    "automation-testing"
+  ],
+  "author": "Mohammed Uzair",
+  "license": "MIT",
   "dependencies": {
     "playwright": "^1.60.0"
   }
