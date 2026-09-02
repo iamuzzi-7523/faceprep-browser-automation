@@ -58,7 +58,7 @@ The automation connects to Chromium through the Chrome DevTools Protocol.
 
 Default endpoint:
 
-`http://localhost:9222`
+`http://127.0.0.1:9222`
 
 The endpoint can be changed using the `CDP_ENDPOINT` environment variable.
 
