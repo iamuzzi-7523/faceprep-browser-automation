@@ -2,12 +2,10 @@ const { chromium } = require("playwright");
 
 const config = {
   cdpEndpoint: process.env.CDP_ENDPOINT || "http://localhost:9222",
-
   targetModules: (process.env.MODULES || "T37x")
     .split(",")
     .map((module) => module.trim())
     .filter(Boolean),
-
   sections: ["Inclass Questions", "Postclass Questions"],
 };
 
@@ -66,7 +64,6 @@ async function inspectQuestions(page, moduleName, sectionName) {
     console.log(
       `No test action found for ${moduleName} -> ${sectionName}.`
     );
-
     return;
   }
 
