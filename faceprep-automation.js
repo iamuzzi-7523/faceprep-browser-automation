@@ -1,8 +1,8 @@
 const { chromium } = require("playwright");
 
 const config = {
-  cdpEndpoint: process.env.CDP_ENDPOINT || "http://127.0.0.1:9222",,
-  targetModules: (process.env.MODULES || "T37x")
+  cdpEndpoint: process.env.CDP_ENDPOINT || "http://127.0.0.1:9222",
+  targetModules: (process.env.MODULES || "T37")
     .split(",")
     .map((module) => module.trim())
     .filter(Boolean),
