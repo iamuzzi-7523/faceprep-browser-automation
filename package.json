@@ -6,7 +6,7 @@
 "scripts": {
   "start": "node faceprep-automation.js",
   "check": "node --check faceprep-automation.js"
-},,
+},
   "keywords": [
     "playwright",
     "browser-automation",
