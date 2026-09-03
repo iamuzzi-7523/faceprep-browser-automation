@@ -1,3 +1,4 @@
+![Node.js CI](https://github.com/iamuzzi-7523/faceprep-browser-automation/actions/workflows/ci.yml/badge.svg)
 # FacePrep Browser Automation
 
 A Playwright-based browser automation project for navigating and inspecting coding-practice workflows through a connected Chromium browser session.
